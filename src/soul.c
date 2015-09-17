@@ -11,6 +11,8 @@
 #include <sys/socket.h>
 #include <unistd.h>
 
+#define HOST_NAME_MAX 255
+
 #define CONFIG_PATH "/soul/soul.conf"
 #define XDG_CONFIG_DEFAULT "/.config"
 
@@ -268,6 +270,13 @@ int main(void)
 
 	}
 
+	if (!opts.location) {
+		opts.location = calloc(HOST_NAME_MAX, sizeof(char));
+		if (gethostname(opts.location, HOST_NAME_MAX * sizeof(char)) < 0) {
+			warn("unable to get hostname");
+		}
+	}
+
 	rc = connect(fd, res->ai_addr, res->ai_addrlen);
 	if (rc == -1) {
 		err(1, "unable to connect to %s", res->ai_canonname);
@@ -290,7 +299,7 @@ int main(void)
 	ns_read_rep(fd, buf, sizeof(buf));
 
 	dprintf(fd, "ext_user_log %s %s %s %s\n",
-			opts.user, challenge, opts.location, opts.data);
+			opts.user, challenge, opts.location, opts.data ? opts.data : "data");
 	ns_read_rep(fd, buf, sizeof(buf));
 
 	clean_config(&opts);
