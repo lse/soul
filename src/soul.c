@@ -46,10 +46,8 @@ static int configfile_path(char *path)
 	}
 
 	char *dirs = strdup(xdg_config_dirs);
-	char *bkp;
-	char *dir;
-
-	dir = strtok_r(dirs, ":", &bkp);
+	char *bkp = NULL;
+	char *dir = strtok_r(dirs, ":", &bkp);
 	while (dir) {
 
 		path[0] = '\0';
