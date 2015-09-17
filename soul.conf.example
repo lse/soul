@@ -1,0 +1,8 @@
+server = ns-server.epita.fr
+port = 4242
+srcaddr = 0.0.0.0
+user = login_x
+password = password
+location = location
+data = data
+
