@@ -1,6 +1,6 @@
 AC_PREREQ(2.60)
 AC_INIT([soul],
-        [0.1],
+        [1.0],
         [gabriel@lse.epita.fr],
         [soul])
 AC_CONFIG_SRCDIR([src/soul.c])
