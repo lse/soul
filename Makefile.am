@@ -1,5 +1,5 @@
 
-EXTRA_DIST =
+EXTRA_DIST = soul-wizard soul.conf.example
 CLEANFILES =
 ACLOCAL_AMFLAGS = -I m4 ${ACLOCAL_FLAGS}
 AM_MAKEFLAGS = --no-print-directory
@@ -14,6 +14,7 @@ AM_CFLAGS = ${my_CFLAGS}
 
 AM_LDFLAGS = -lbsd
 
+bin_SCRIPTS = soul-wizard
 bin_PROGRAMS = soul
 
 soul_SOURCES = \
