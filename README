@@ -7,3 +7,6 @@ TODO
 * password external storage
 * default username as current user
 * documentation
+* restart on connection lost
+* have a way to modify connection status
+* systemd unit file
